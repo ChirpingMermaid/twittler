@@ -17,9 +17,10 @@
 
       $(document).ready(function(){
         var $body = $('body');
-        $body.html("<h1>Twittler</h1><section></section>");
+        $body.html("<h1>Twittler</h1>" + "<section></section>");
 
         var lastIndex;
+        var allTweets = true;
 
         function displayTweet(index){
           var tweet = streams.home[index];
@@ -41,11 +42,25 @@
               displayTweet(i);
             }
             lastIndex = streams.home.length - 1;
-          }, 1000);
+          }, 10);
+        }
+
+        function resetTitle(){
+          $('h2').remove();
+          //$('section').before("<h1>Twittler</h1>");
+          // $('h1').on('mouseenter', function(){
+          //   $(this).addClass('highlight');
+          // });
+          // $('h1').on('mouseenter', function(){
+          //   $(this).removeClass('highlight');
+          // });
         }
 
         oldTweets();
         newTweets();
+
+
+        
 
         // not sure how to make the following for loop work to create an .on()
         // function for each user in the users array...
@@ -63,49 +78,74 @@
         //   });
         // }
 
-        // upon clicking the username, remove all messages that are not from the user
+        // upon clicking the username, hide all messages that are not from the user
         // users = [shawndrost, sharksforcheap, mracus, douglascalhoun]
-        $('.shawndrost').on('click', function(){
-          $('h1').append(" @shawndrost");
-          setInterval(function(){
-            for (var j = 0; j < users.length; j++){
-              if (users[j] !== "shawndrost"){
-                $("." + users[j]).remove();
+        setInterval(function(){
+          $('.shawndrost').on('click', function(){
+            allTweets = false;
+            resetTitle();
+            $('h1').append("<h2>@shawndrost</h2>");
+            setInterval(function(){
+              for (var j = 0; j < users.length; j++){
+                if (users[j] !== "shawndrost" && !allTweets){
+                  $("." + users[j]).remove();
+                }
               }
-            }
-          }, 1);
-        });
-        $('.sharksforcheap').on('click', function(){
-          $('h1').append(" @sharksforcheap");
-          setInterval(function(){
-            for (var j = 0; j < users.length; j++){
-              if (users[j] !== "sharksforcheap"){
-                $("." + users[j]).remove();
+            }, 1);
+          });
+          $('.sharksforcheap').on('click', function(){
+            allTweets = false;
+            resetTitle();
+            $('h1').append("<h2>@sharksforcheap</h2>");
+            setInterval(function(){
+              if (!allTweets){
+                $('div').hide();
+                $('.sharksforcheap').show();
               }
-            }
-          }, 1);
-        });
-        $('.mracus').on('click', function(){
-          $('h1').append(" @mracus");
-          setInterval(function(){
-            for (var j = 0; j < users.length; j++){
-              if (users[j] !== "mracus"){
-                $("." + users[j]).remove();
+            }, 1);
+          });
+          $('.mracus').on('click', function(){
+            allTweets = false;
+            resetTitle();
+            $('h1').append("<h2>@mracus</h2>");
+            setInterval(function(){
+              if (!allTweets){
+                $('div').hide();
+                $('.mracus').show();
               }
-            }
-          }, 1);
-        });
-        $('.douglascalhoun').on('click', function(){
-          $('h1').append(" @douglascalhoun");
-          setInterval(function(){
-            for (var j = 0; j < users.length; j++){
-              if (users[j] !== "douglascalhoun"){
-                $("." + users[j]).remove();
+            }, 1);
+          });
+          $('.douglascalhoun').on('click', function(){
+            allTweets = false;
+            resetTitle();
+            $('h1').append("<h2>@douglascalhoun</h2>");
+            setInterval(function(){
+              if (!allTweets){
+                $('div').hide();
+                $('.douglascalhoun').show();
               }
-            }
-          }, 1);
-        });
+            }, 1);
+          });
 
+          $('h1').on('click', function(){
+            allTweets = true;
+            resetTitle();
+            if (allTweets){
+              $('div').show();
+              //$('div').remove();
+              //oldTweets();
+              //newTweets();
+            }
+          });
+
+          $('h1').on('mouseenter', function(){
+            $(this).addClass('highlight');
+          });
+          $('h1').on('mouseenter', function(){
+            $(this).removeClass('highlight');
+          });
+        }, 10);
+        
 
       });
 
