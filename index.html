@@ -17,15 +17,15 @@
 
       $(document).ready(function(){
         var $body = $('body');
-        $body.html('<h1>Twittler</h1>');
+        $body.html("<h1>Twittler</h1><section></section>");
 
         var lastIndex;
 
         function displayTweet(index){
           var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.html('@<strong>' + tweet.user + '</strong>: ' + tweet.message + '<br><span>' + tweet.created_at + '</span>');
-          $body.append($tweet);
+          var $tweet = $("<div class='" + tweet.user + "'></div>");
+          $tweet.html("@<strong>" + tweet.user + "</strong>: " + tweet.message + "<br><span>" + tweet.created_at + "</span>");
+          $('section').prepend($tweet);
         }
 
         function oldTweets(){
@@ -47,10 +47,65 @@
         oldTweets();
         newTweets();
 
-        // var highlight = function(){ $(this).addClass('highlight'); }
-        // var removeHighlight = function(){ $(this).removeClass('highlight'); }
-        // $('#newTweet').on('mouseenter', highlight);
-        // $('#newTweet').on('mouseleave', removeHighlight);
+        // not sure how to make the following for loop work to create an .on()
+        // function for each user in the users array...
+        // for (var i = 0; i < users.length; i++){
+        //   $("." + users[i]).on('click', function(){
+        //     $('h1').append(" @" + users[i]);
+        //     //clearInterval(newTweets);
+        //     setInterval(function(){
+        //       for (var j = 0; j < users.length; j++){
+        //         if (users[j] !== users[i]){
+        //           $("." + users[j]).remove();
+        //         }
+        //       }
+        //     }, 1);  
+        //   });
+        // }
+
+        // upon clicking the username, remove all messages that are not from the user
+        // users = [shawndrost, sharksforcheap, mracus, douglascalhoun]
+        $('.shawndrost').on('click', function(){
+          $('h1').append(" @shawndrost");
+          setInterval(function(){
+            for (var j = 0; j < users.length; j++){
+              if (users[j] !== "shawndrost"){
+                $("." + users[j]).remove();
+              }
+            }
+          }, 1);
+        });
+        $('.sharksforcheap').on('click', function(){
+          $('h1').append(" @sharksforcheap");
+          setInterval(function(){
+            for (var j = 0; j < users.length; j++){
+              if (users[j] !== "sharksforcheap"){
+                $("." + users[j]).remove();
+              }
+            }
+          }, 1);
+        });
+        $('.mracus').on('click', function(){
+          $('h1').append(" @mracus");
+          setInterval(function(){
+            for (var j = 0; j < users.length; j++){
+              if (users[j] !== "mracus"){
+                $("." + users[j]).remove();
+              }
+            }
+          }, 1);
+        });
+        $('.douglascalhoun').on('click', function(){
+          $('h1').append(" @douglascalhoun");
+          setInterval(function(){
+            for (var j = 0; j < users.length; j++){
+              if (users[j] !== "douglascalhoun"){
+                $("." + users[j]).remove();
+              }
+            }
+          }, 1);
+        });
+
 
       });
 

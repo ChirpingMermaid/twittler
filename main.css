@@ -1,48 +1,50 @@
 body {
-        background-color: lightblue;
-        font: 14px/20px "Century Gothic", "Trebuchet MS", "Droid Sans", Arial;
-      }
-      h1 {
-        color: white;
-        text-align: center;
-        font-size: 40px;
-      }
-      div {
-        box-sizing: border-box;
-        background-color: white;
-        border: 1px solid lightgray;
-        border-radius: 5px;
-        width: 500px;
-        color: gray;
-        margin: 10px auto;
-        padding: 5px;
-      }
+  background-color: lightblue;
+  font: 14px/20px "Century Gothic", "Trebuchet MS", "Droid Sans", Arial;
+}
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 40px;
+}
+div {
+  box-sizing: border-box;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 500px;
+  color: gray;
+  margin: 10px auto;
+  padding: 5px;
+}
 
-      input {
-        width: 420px;
-        padding: 5px;
-      }
-      strong {
-        color: #2E86C1;
-      }
-      background-color: lightyellow;
-      }
-      form {
-        display: block;
-        margin: 30px auto;
-        width: 500px;
-      }
-      span {
-        color: lightgray;
-        font: 10px/12px Consolas, "Courier New", "Droid Sans", Arial;
-      }
-      .button {
-        height: 30px;
-        width: 60px;
-        background: #2E86C1;
-        border: 1px solid white;
-        border-radius: 5px;
-        color: white;
-      }
-      .highlight {
-        
+input {
+  width: 420px;
+  padding: 5px;
+}
+strong {
+  color: #2E86C1;
+  cursor: pointer;
+}
+
+form {
+  display: block;
+  margin: 30px auto;
+  width: 500px;
+}
+span {
+  color: lightgray;
+  font: 10px/12px Consolas, "Courier New", "Droid Sans", Arial;
+}
+.button {
+  height: 30px;
+  width: 60px;
+  background: #2E86C1;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+}
+.highlight {
+  color: lightyellow;
+  cursor: pointer;
+} 
