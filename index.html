@@ -3,23 +3,40 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
+<!--     <h1>Twittler</h1>
+    <center>
+    <form>
+      <input type="text" name="comment" id="newTweet" placeholder="comment here...">
+      <input type="submit" name="submit" value="post" class="button">
+    </form> -->
+    <center>
     <script>
 
       $(document).ready(function(){
         var $body = $('body');
-        $body.html('');
+        $body.html('<h1>Twittler</h1>');
+
+        function generateTweet(index){
+          var tweet = streams.home[index];
+
+        }
 
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          $tweet.html('@<strong>' + tweet.user + '</strong>: ' + tweet.message + '<br><span>' + tweet.created_at + '</span>');
           $tweet.appendTo($body);
           index -= 1;
         }
 
+        // var highlight = function(){ $(this).addClass('highlight'); }
+        // var removeHighlight = function(){ $(this).removeClass('highlight'); }
+        // $('#newTweet').on('mouseenter', highlight);
+        // $('#newTweet').on('mouseleave', removeHighlight);
       });
 
     </script>
